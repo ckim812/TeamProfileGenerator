@@ -1,13 +1,21 @@
-const Manager = require("./lib/teamManager");
-const Engineer = require("./lib/engineer");
-const Intern = require("./intern");
+const Manager = require("../lib/teamManager");
+const Engineer = require("../lib/engineer");
+const Intern = require("../lib/intern");
 
-class Team {
+function createEmployeeDivs(employees) {}
 
-}
+function generateHTML(employees) {
+  //insert cards per employee
+  //print out an array of strings in HTML from
 
+  // let employeeDivs = createEmployeeDivs(employees);
 
-function generateHTML(data) {
+  let employeeDivs = [
+    "<li>liONE</li>",
+    "<li>liTWO</li>",
+    "<li>liTHREE</li>",
+  ];
+
   let output = `<!DOCTYPE html>
     <html lang="en">
       <head>
@@ -24,10 +32,10 @@ function generateHTML(data) {
         <title>Document</title>
       </head>
       <body>
-        <h1>Hello ${data.teamManagerName}!!!</h1>
-        <h2>ID: ${data.employeeID}</h2>
-        <h2>Email: ${data.emailAddress}</h2>
-        <h2>Office #: ${data.officeNumber}</h2>
+        <h1>Hello ${employeeDivs}!!!</h1>
+        <h2>ID: ${employeeDivs[0]}</h2>
+        <h2>Email: ${employeeDivs[1]}</h2>
+        <h2>Office #: ${employeeDivs[2]}</h2>
         <!-- JavaScript Bundle with Popper -->
         <script
           src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"

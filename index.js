@@ -1,7 +1,7 @@
 const inquirer = require("inquirer");
 const generateHTML = require("./generateHTML");
 const fs = require("fs");
-const Employee = require("./employee");
+const Employee = require("./lib/employee");
 
 inquirer
   .prompt([

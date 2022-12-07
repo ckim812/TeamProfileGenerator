@@ -1,5 +1,5 @@
-const Manager = require("./teamManager");
-const Engineer = require("./engineer");
+const Manager = require("./lib/teamManager");
+const Engineer = require("./lib/engineer");
 const Intern = require("./intern");
 
 class Team {

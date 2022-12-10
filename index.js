@@ -4,7 +4,6 @@ const fs = require("fs");
 const { Employee, Manager, Intern, Engineer } = require("./lib");
 
 let employees = [];
-
 askManagerQ();
 
 function askManagerQ() {
@@ -32,7 +31,7 @@ function askManagerQ() {
       },
     ])
     .then((data) => {
-      employees.unshift(
+      employees.push(
         new Manager(
           data.name,
           data.employeeID,
@@ -124,17 +123,54 @@ function addMoreEmployees() {
         type: "list",
         name: "newEmployee",
         message: "What type of employee?",
-        choices: ["engineer", "intern", "finish building my team"],
+        choices: [
+          // 'test',
+          // "manager",
+          "engineer",
+          "intern",
+          "I'm done building my team!",
+        ],
       },
     ])
     .then((data) => {
-      // console.log(data);
+      // if (data.newEmployee === "test") {
+      //   employees.push(
+      //     new Manager(
+      //       'charlesMANG',
+      //       1234566,
+      //       'ckim8123@gmail.com',
+      //       1234567489
+      //     )
+      //   );employees.push(
+      //     new Engineer(
+      //       'charlesENGIN',
+      //       1234566,
+      //       'c432543254325@gmail.com',
+      //       'ckim812'
+      //     )
+      //   );employees.push(
+      //     new Intern(
+      //       'charlesINTER',
+      //       1234566,
+      //       'VBFESRGBRDEASHFDASG@gmail.com',
+      //       'Yale'
+      //     )
+      //   );
+      //   let htmlContent = generateHTML(employees);
+      //   fs.writeFile("./dist/index.html", htmlContent, (err) =>
+      //     err
+      //       ? console.log(err)
+      //       : console.log("Successfully created index.html!")
+      //   );
+      //   return;
+      // } else if (data.newEmployee === "manager") {
+      //   askManagerQ();
+      // } else 
       if (data.newEmployee === "engineer") {
         askEngineerQ();
       } else if (data.newEmployee === "intern") {
         askInternQ();
       } else {
-        console.log(employees);
         let htmlContent = generateHTML(employees);
         fs.writeFile("./dist/index.html", htmlContent, (err) =>
           err

@@ -1,24 +1,13 @@
 const { Employee, Manager, Intern, Engineer } = require("../lib");
 
-// function createEmployeeDivs(employees) {
-//   for (let i = 0; i < employees.length; i++) {
-//     const element = employees[i];
-//     employeeDivs.push;
-//   }
-// }
-
 function generateHTML(employees) {
-  //insert cards per employee
-  //print out an array of strings in HTML from
+  // // employees = JSON.parse(employees);
+  // console.log("employees="+employees[0].name);
+  // console.log("employees="+employees[0].id);
+  // console.log("employees="+employees[0].email);
+  // console.log("employees="+employees[0].officeNumber);
 
-  // let employeeDivs = createEmployeeDivs(employees);
-
-  // let employeeDivs = [
-  //   `<div class="card" style="width: 18rem;">${employees[0].name}${employees[0].id}${employees[0].email}${employees[0].type}${employees[0].officeNumber}</div>`,
-  //   `<div class="card" style="width: 18rem;">${employees[1].name}${employees[1].id}${employees[1].email}${employees[1].type}${employees[1].officeNumber}</div>`,
-  //   `<div class="card" style="width: 18rem;">${employees[2].name}${employees[2].id}${employees[2].email}${employees[2].type}${employees[2].officeNumber}</div>`,
-  // ];
-
+  //add top portion of HTML to output
   let output = `<!DOCTYPE html>
   <html lang="en">
     <head>
@@ -38,21 +27,46 @@ function generateHTML(employees) {
       <div class="d-flex justify-content-center bg-primary">
         <h1 class="d-inline-flex m-2 p-2 text-white">Here are my employees:</h1>
       </div>
-  
-      <div class="card border-primary mb-3" style="max-width: 18rem;">
-        <div class="card-header">Manager</div>
+      `;
+
+  //insert cards per employee
+  let createEmployeeDivs = () => {
+    console.log("#ofemployees=" + employees.length);
+    for (let i = 0; i < employees.length; i++) {
+      let roleDetailDiv = ``;
+      switch (employees[i].getRole()) {
+        case "Engineer":
+          roleDetailDiv = `<li>${employees[i].getRoleDetailLabel()} <a href = "https://github.com/${employees[i].gitHub}" target="_blank">${employees[i].gitHub}</a></li>`;
+          break;
+        default:
+          roleDetailDiv = `<li>${employees[i].getRoleDetailLabel()} ${employees[i].getRoleDetail()}</li>`;
+      }
+
+      let employeeCard = [
+        `
+    <div class="card border-primary mb-3" style="max-width: 18rem;">
+      <div class="card-header">${employees[i].getRole()}</div>
         <div class="card-body text-primary">
-          <h5 class="card-title">Employee Name</h5>
-          <p class="card-text">
-            <ul>
-              <li>ID: 1234</li>
-              <li>Email: email@email.com</li>
-              <li>Office#/GitHub/School: data</li>
-            </ul>
-          </p>
-        </div>
+          <h5 class="card-title">${employees[i].name}</h5>
+        <p class="card-text">
+          <ul>
+            <li>ID: ${employees[i].id}</li>
+            <li>Email: <a href = "mailto: ${employees[i].email}">${employees[i].email}</a></li>
+            ${roleDetailDiv}
+          </ul>
+        </p>
       </div>
-  
+    </div>
+      `,
+      ];
+      output += employeeCard;
+    }
+  };
+
+  createEmployeeDivs();
+
+  //add bottom portion of HTML to output
+  output += `
       <!-- JavaScript Bundle with Popper -->
       <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"

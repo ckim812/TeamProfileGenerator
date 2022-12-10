@@ -1,10 +1,7 @@
 const inquirer = require("inquirer");
 const generateHTML = require("./src/generateHTML");
 const fs = require("fs");
-const Employee = require("./lib/employee");
-const Engineer = require("./lib/engineer");
-const Manager = require("./lib/teamManager");
-const Intern = require("./lib/intern");
+const { Employee, Manager, Intern, Engineer } = require("./lib");
 
 let employees = [];
 
@@ -15,7 +12,7 @@ function askManagerQ() {
     .prompt([
       {
         type: "input",
-        name: "teamManagerName",
+        name: "name",
         message: "What is the team manager's name?",
       },
       {
@@ -37,7 +34,7 @@ function askManagerQ() {
     .then((data) => {
       employees.unshift(
         new Manager(
-          data.teamManagerName,
+          data.name,
           data.employeeID,
           data.emailAddress,
           data.officeNumber
@@ -139,7 +136,7 @@ function addMoreEmployees() {
       } else {
         console.log(employees);
         let htmlContent = generateHTML(employees);
-        fs.writeFile("index.html", htmlContent, (err) =>
+        fs.writeFile("./dist/index.html", htmlContent, (err) =>
           err
             ? console.log(err)
             : console.log("Successfully created index.html!")

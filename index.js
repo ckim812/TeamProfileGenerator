@@ -39,7 +39,7 @@ function askManagerQ() {
           data.officeNumber
         )
       );
-      console.log(employees);
+      // console.log(employees);
       addMoreEmployees();
     });
 }
@@ -75,7 +75,7 @@ function askEngineerQ() {
         data.gitHub
       );
       employees.push(newEngineer);
-      console.log(employees);
+      // console.log(employees);
       addMoreEmployees();
     });
 }
@@ -111,7 +111,7 @@ function askInternQ() {
         data.school
       );
       employees.push(newIntern);
-      console.log(employees);
+      // console.log(employees);
       addMoreEmployees();
     });
 }
@@ -126,8 +126,8 @@ function addMoreEmployees() {
         choices: [
           // 'test',
           // "manager",
-          "engineer",
-          "intern",
+          "Engineer",
+          "Intern",
           "I'm done building my team!",
         ],
       },
@@ -166,9 +166,9 @@ function addMoreEmployees() {
       // } else if (data.newEmployee === "manager") {
       //   askManagerQ();
       // } else 
-      if (data.newEmployee === "engineer") {
+      if (data.newEmployee === "Engineer") {
         askEngineerQ();
-      } else if (data.newEmployee === "intern") {
+      } else if (data.newEmployee === "Intern") {
         askInternQ();
       } else {
         let htmlContent = generateHTML(employees);

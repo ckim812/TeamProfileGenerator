@@ -137,6 +137,7 @@ function addMoreEmployees() {
       } else if (data.newEmployee === "intern") {
         askInternQ();
       } else {
+        console.log(employees);
         let htmlContent = generateHTML(employees);
         fs.writeFile("index.html", htmlContent, (err) =>
           err
